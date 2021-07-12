@@ -1,2 +1,5 @@
+org/eoghancorp/server/Models/Message.class
+org/eoghancorp/server/Models/Greeting.class
 org/eoghancorp/server/SocketController.class
+org/eoghancorp/server/WebSocketConfig.class
 org/eoghancorp/server/Application.class
