@@ -1,41 +1,43 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
-  Sidenav, Nav, Dropdown, Icon, Toggle,
-  Sidebar, Navbar, Footer
-} from 'rsuite';
-
+  Sidenav,
+  Nav,
+  Dropdown,
+  Icon,
+  Toggle,
+  Sidebar,
+  Navbar,
+  Footer,
+} from "rsuite";
 
 const headerStyles = {
   padding: 18,
   fontSize: 16,
   height: 56,
-  background: '#34c3ff',
-  color: ' #fff',
-  whiteSpace: 'nowrap',
-  overflow: 'hidden'
-
+  background: "#34c3ff",
+  color: " #fff",
+  whiteSpace: "nowrap",
+  overflow: "hidden",
 };
-
-
 
 export default class Navigation extends Component {
   constructor(props) {
     super(props);
     this.state = {
       expanded: this.props.expanded,
-      activeKey: '1'
+      activeKey: "1",
     };
     this.handleToggle = this.handleToggle.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
   }
   handleToggle() {
     this.setState({
-      expanded: !this.state.expanded
+      expanded: !this.state.expanded,
     });
   }
   handleSelect(eventKey) {
     this.setState({
-      activeKey: eventKey
+      activeKey: eventKey,
     });
   }
   render() {
@@ -45,18 +47,22 @@ export default class Navigation extends Component {
       <div>
         <Sidenav.Header>
           <div style={headerStyles}>
-            <Icon icon="logo-analytics" size="lg" style={{ verticalAlign: 0 }} />
+            <Icon
+              icon="logo-analytics"
+              size="lg"
+              style={{ verticalAlign: 0 }}
+            />
             <span style={{ marginLeft: 12 }}> BRAND</span>
           </div>
         </Sidenav.Header>
-        <Sidenav.Body >
-          <Nav >
+        <Sidenav.Body>
+          <Nav>
             <Nav.Item eventKey="1" active icon={<Icon icon="dashboard" />}>
               Dashboard
-                  </Nav.Item>
+            </Nav.Item>
             <Nav.Item eventKey="2" icon={<Icon icon="group" />}>
               User Group
-                  </Nav.Item>
+            </Nav.Item>
             <Dropdown
               eventKey="3"
               trigger="hover"

@@ -46,17 +46,41 @@ const NavToggle = ({ expand, onChange }) => {
   );
 };
 
+
+
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      expand: true
+      expand: true,
+      width: 0,
+      height: 0,
     };
+    // Variable used to get the screen's height.
+
     this.handleToggle = this.handleToggle.bind(this);
   }
+
+  componentDidMount = () => {
+    this.updatedWindowDimensions = this.updateWindowDimensions();
+    this.updateWindowDimensions();
+    window.addEventListener("resize", this.updateWindowDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions() {
+    console.log(this.state.height);
+
+    // this.setState({ width: window.innerWidth, height: window.innerHeight });
+    return true;
+  }
+
   handleToggle() {
     this.setState({
-      expand: !this.state.expand
+      expand: !this.state.expand,
     });
   }
   render() {
@@ -65,11 +89,15 @@ export default class App extends Component {
       <div className="show-fake-browser sidebar-page rs-theme-dark">
         <Container>
           <Sidebar
-            style={{ display: 'flex', flexDirection: 'column' }}
+            style={{ display: "flex", flexDirection: "column" }}
             width={expand ? 260 : 100}
             collapsible
           >
-            <Sidenav expanded={expand} defaultOpenKeys={['3']}  >
+            <Sidenav
+              className="side-nav"
+              expanded={expand}
+              defaultOpenKeys={["3"]}
+            >
               <Navigation expanded={this.state.expand} />
             </Sidenav>
             <NavToggle expand={expand} onChange={this.handleToggle} />
@@ -86,38 +114,5 @@ export default class App extends Component {
     );
   }
 }
-
-
-
-// function App() {
-//   return (
-//     <div>
-//       <Container className="App">
-//         <Sidebar>
-//           <Navigation />
-//         </Sidebar>
-//         <Container>
-//           <h4>Header</h4>
-//           <Content>
-//             <p>content</p>
-//             <ChatContainer/>
-//           </Content>
-//           <Footer>Footer</Footer>
-//         </Container>
-//       </Container>
-
-//       <div className="App">
-//         <div>
-//           <h2>header</h2>
-//           <p>paragraph</p>
-//         </div>
-//       </div>
-
-//     </div>
-//   );
-// }
-
-// export default App;
-
 
 
