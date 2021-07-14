@@ -1,9 +1,26 @@
-.chat-container {
-  border: 1px solid black;
-  width: 90%;
-  background-color: #262626;
+
+html, body, #root, .sidebar-container, .rs-container, .rs-sidebar {
+  height: 100%;
 }
 
-.side-nav {
-  min-height: 750px;
+.sidebar-page, .side-nav {
+  height: 98%;
+}
+
+.chat-page {
+  padding: 10px;
+  border: 1px solid green;
+}
+
+.rs-header {
+  text-align: center;
+}
+
+/* The container showing the main chat.  */
+.chat-container {
+  border: 1px solid orange;
+  padding: 10px;
+  background-color: #262626;
+  min-height: 500px;
+
 }

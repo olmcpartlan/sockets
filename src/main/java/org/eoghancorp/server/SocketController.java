@@ -11,7 +11,6 @@ public class SocketController {
     @MessageMapping("/index")
     @SendTo("/topic/chatroom")
     public Greeting message(Message message) throws Exception {
-        Thread.sleep(1000);
         System.out.println("NAME: " + message.getName());
         System.out.println("CONTENT: " + message.getMessage());
 

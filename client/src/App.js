@@ -53,29 +53,10 @@ export default class App extends Component {
     super(props);
     this.state = {
       expand: true,
-      width: 0,
-      height: 0,
     };
     // Variable used to get the screen's height.
 
     this.handleToggle = this.handleToggle.bind(this);
-  }
-
-  componentDidMount = () => {
-    this.updatedWindowDimensions = this.updateWindowDimensions();
-    this.updateWindowDimensions();
-    window.addEventListener("resize", this.updateWindowDimensions);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateWindowDimensions);
-  }
-
-  updateWindowDimensions() {
-    console.log(this.state.height);
-
-    // this.setState({ width: window.innerWidth, height: window.innerHeight });
-    return true;
   }
 
   handleToggle() {
@@ -86,7 +67,7 @@ export default class App extends Component {
   render() {
     const { expand } = this.state;
     return (
-      <div className="show-fake-browser sidebar-page rs-theme-dark">
+      <div className="show-fake-browser sidebar-page rs-theme-dark ">
         <Container>
           <Sidebar
             style={{ display: "flex", flexDirection: "column" }}
@@ -104,10 +85,7 @@ export default class App extends Component {
           </Sidebar>
 
           <Container>
-            <Header>
-              <h2>Page Title</h2>
-            </Header>
-            <Content>Content</Content>
+            <ChatContainer/>
           </Container>
         </Container>
       </div>

@@ -41,7 +41,6 @@ export default class Navigation extends Component {
     });
   }
   render() {
-    const { expand } = this.state;
 
     return (
       <div>
