@@ -2,17 +2,25 @@ import React, { Component } from 'react';
 import { Header, Content, Button } from 'rsuite';
 
 
+// stompClient.subscribe('/topic/chatroom', function (greeting) {
+
 export default class ChatContainer extends Component {
-  ws = new WebSocket("ws://localhost:8080/gs-guide-websocket/websocket")
+  ws = new WebSocket("ws://localhost:8080/gs-guide-websocket/topic/chatroom/websocket")
 
   componentDidMount() {
     this.ws.onopen = () => {
       console.log("connected");
     }
+    let message = null;
 
     this.ws.onmessage = evt => {
       // listen for data
-      const message = JSON.parse(evt.data)
+      try {
+        message = JSON.parse(evt.data)
+        console.log(message);
+      }
+      catch { }
+
       // setState here or something
       console.log(message);
     }
@@ -23,11 +31,9 @@ export default class ChatContainer extends Component {
   }
 
   sendMessage = () => {
-    const data = JSON.stringify({ 
-      'name': 'a name', 
-      'message': 'a message' 
-    })
+    const data = "{ 'name': 'a name', 'message': 'a message' }";
     console.log('sending message');
+    console.log(data);
     this.ws.send(data);
   }
 

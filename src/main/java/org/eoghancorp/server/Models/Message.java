@@ -1,7 +1,11 @@
 package org.eoghancorp.server.Models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Message {
+    @JsonProperty("name")
     private String name;
+    @JsonProperty("message")
     private String message;
 
     public Message() {}
